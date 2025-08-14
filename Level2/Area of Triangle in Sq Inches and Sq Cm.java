@@ -3,7 +3,6 @@ import java.util.Scanner;
 class TriangleArea {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-
         double baseCm, heightCm;
         double areaSqCm, areaSqInch;
         double cmPerInch = 2.54;
