@@ -1,4 +1,3 @@
-package BridgeLabz;
 
 import java.util.*;
 
