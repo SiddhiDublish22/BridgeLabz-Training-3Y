@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class TrimStringCharAt {
+
+    // Method to trim using charAt()
+    static int[] trimSpaces(String str) {
+        int start = 0, end = str.length() - 1;
+        while (start < str.length() && str.charAt(start) == ' ') start++;
+        while (end >= 0 && str.charAt(end) == ' ') end--;
+        return new int[]{start, end};
+    }
+
+    // Method to create substring using charAt()
+    static String substringByCharAt(String str, int start, int end) {
+        String result = "";
+        for (int i = start; i <= end; i++) {
+            result += str.charAt(i);
+        }
+        return result;
+    }
+
+    // Method to compare two strings using charAt()
+    static boolean compareStrings(String s1, String s2) {
+        if (s1.length() != s2.length()) return false;
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s2.charAt(i)) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string with spaces: ");
+        String input = sc.nextLine();
+
+        int[] trimIndexes = trimSpaces(input);
+        String trimmedCustom = substringByCharAt(input, trimIndexes[0], trimIndexes[1]);
+        String trimmedBuiltIn = input.trim();
+
+        System.out.println("Custom Trim: '" + trimmedCustom + "'");
+        System.out.println("Built-in Trim: '" + trimmedBuiltIn + "'");
+        System.out.println("Both equal? " + compareStrings(trimmedCustom, trimmedBuiltIn));
+    }
+}
