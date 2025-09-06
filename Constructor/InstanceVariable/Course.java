@@ -1,4 +1,4 @@
-package Constructor.Level1.InstanceVariable;
+package Constructor.InstanceVariable;
 
 public class Course {
     String courseName;
