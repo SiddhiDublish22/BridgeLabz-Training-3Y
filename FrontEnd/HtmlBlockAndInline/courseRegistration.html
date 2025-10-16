@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Course Registration Form</title>
+</head>
+<body>
+ 
+  <h1>Course Registration</h1>
+
+
+  <form>
+    <fieldset>
+      <legend>Personal Information</legend>
+
+
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" title="Enter your full name" required>
+      <br><br>
+
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" title="Enter your email address" required>
+    </fieldset>
+
+    <br>
+
+  
+    <fieldset>
+      <legend>Course Selection</legend>
+
+
+      <label for="course">Choose a course:</label>
+      <select id="course" name="course" title="Select the course you want to register for">
+        <option value="">-- Select course --</option>
+        <option value="web-dev">Web Development</option>
+        <option value="data-science">Data Science</option>
+        <option value="ui-ux">UI/UX Design</option>
+        <option value="ai-ml">AI / Machine Learning</option>
+      </select>
+      <br><br>
+
+ 
+      <label for="notes">Notes:</label>
+      <input type="text" id="notes" name="notes" placeholder="Optional notes">
+    </fieldset>
+  </form>
+
+  <br>
+
+  <h2>Available Course Schedules</h2>
+  <table border="1" title="Course schedules (Day, Time, Instructor)">
+    <caption>Course Schedules</caption>
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Instructor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Web Development</td>
+        <td>Monday, Wednesday</td>
+        <td>10:00 - 12:00</td>
+        <td>Ms. Sharma</td>
+      </tr>
+      <tr>
+        <td>Data Science</td>
+        <td>Tuesday, Thursday</td>
+        <td>14:00 - 16:00</td>
+        <td>Dr. Verma</td>
+      </tr>
+      <tr>
+        <td>UI/UX Design</td>
+        <td>Saturday</td>
+        <td>09:00 - 12:00</td>
+        <td>Mr. Patel</td>
+      </tr>
+      <tr>
+        <td>AI / Machine Learning</td>
+        <td>Friday</td>
+        <td>16:00 - 18:00</td>
+        <td>Prof. Rao</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
