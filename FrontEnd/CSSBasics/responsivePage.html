@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modern Web Layout</title>
+
+<style>
+  /* ---------- Global Reset & Base Styles ---------- */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: #222;
+    background-color: #f4f6f9;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 51, 102, 0.95);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  nav a:hover {
+    color: #ffcc00;
+  }
+
+  /* ---------- Hero Section ---------- */
+  .hero {
+    position: relative;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("https://images.unsplash.com/photo-1503264116251-35a269479413");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
+    max-width: 700px;
+  }
+
+  /* ---------- About Section ---------- */
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: #ffffff;
+  }
+
+  .about img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .about-text {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .about-text h3 {
+    color: #003366;
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
+
+  .about-text p {
+    line-height: 1.8;
+  }
+
+  /* ---------- Services Section ---------- */
+  .services {
+    background: linear-gradient(135deg, #003366, #0055aa);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .services h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .service-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    width: 280px;
+    padding: 2rem 1rem;
+    transition: transform 0.3s;
+  }
+
+  .box:hover {
+    transform: translateY(-8px);
+  }
+
+  .box h4 {
+    margin-bottom: 0.5rem;
+    color: #ffcc00;
+  }
+
+  /* ---------- Contact Section ---------- */
+  .contact {
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+  }
+
+  .contact h3 {
+    text-align: center;
+    color: #003366;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  input,
+  textarea {
+    padding: 0.8rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: #003366;
+    outline: none;
+  }
+
+  button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #0055aa;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  /* ---------- Responsive Design ---------- */
+  @media (max-width: 768px) {
+    .about {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+  <header>
+    <h1>My Modern Website</h1>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="hero" class="hero">
+    <h2>Welcome to a Modern, Responsive, and Beautiful Web Experience</h2>
+  </section>
+
+  <section id="about" class="about">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="About Image" />
+    <div class="about-text">
+      <h3>About Us</h3>
+      <p>
+        We are a creative agency that specializes in modern web design, digital branding, and responsive interfaces. Our team focuses on user experience and accessibility to deliver the best online presence for businesses.
+      </p>
+      <p>
+        Using the latest CSS and HTML technologies, we build sites that are elegant, functional, and adaptable to any screen size.
+      </p>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h3>Our Services</h3>
+    <div class="service-boxes">
+      <div class="box">
+        <h4>Web Design</h4>
+        <p>Clean, responsive designs that look perfect on all devices.</p>
+      </div>
+      <div class="box">
+        <h4>Brand Strategy</h4>
+        <p>Helping you build a memorable and effective brand identity.</p>
+      </div>
+      <div class="box">
+        <h4>SEO Optimization</h4>
+        <p>Improve your visibility on search engines with proven methods.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h3>Contact Us</h3>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Your Name | Modern CSS Webpage Layout</p>
+  </footer>
+
+</body>
+</html>
