@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CSS Newspaper Layout</title>
+
+<style>
+  /* ---------- Global Styles ---------- */
+  body {
+    margin: 0;
+    font-family: "Georgia", serif;
+    background-color: #f5f0e6;
+    color: #222;
+    line-height: 1.8;
+  }
+
+  header {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 2rem 1rem;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  /* ---------- Newspaper Layout ---------- */
+  main {
+    background-color: #fff;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    column-count: 3;
+    column-gap: 2rem;
+  }
+
+  /* Make heading span across all columns */
+  main h2 {
+    column-span: all;
+    color: #003366;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+  }
+
+  /* Floating image for realism */
+  img {
+    float: left;
+    width: 40%;
+    margin: 0 1rem 1rem 0;
+    border-radius: 8px;
+  }
+
+  /* Paragraph styling */
+  p {
+    text-align: justify;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  footer {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive: single or double column on smaller screens */
+  @media (max-width: 900px) {
+    main {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 600px) {
+    main {
+      column-count: 1;
+    }
+
+    img {
+      width: 100%;
+      float: none;
+      margin: 1rem 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+  <header>
+    <h1>The Daily Chronicle</h1>
+  </header>
+
+  <main>
+    <h2>Global Innovation Summit 2025 — A Step Toward the Future</h2>
+
+    <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d" alt="Conference Hall">
+
+    <p>
+      The 2025 Global Innovation Summit brought together world leaders, entrepreneurs, and researchers to discuss advancements in artificial intelligence, sustainability, and digital transformation. With over 5,000 attendees, the event set new records for participation.
+    </p>
+    <p>
+      Experts highlighted the growing role of ethical technology and the importance of sustainable growth. Many keynote speakers emphasized collaboration between public and private sectors to drive progress in green energy and education.
+    </p>
+    <p>
+      The conference also showcased innovative startups working on solutions for climate change, renewable energy, and healthcare. One of the key themes was leveraging AI to build smarter, more inclusive cities.
+    </p>
+    <p>
+      Alongside tech demonstrations, panels discussed the human impact of automation and the future of work. The general consensus was that while technology will replace some jobs, it will create many more opportunities that didn’t exist before.
+    </p>
+    <p>
+      With a focus on global collaboration, the summit concluded by launching new international partnerships to support education and innovation in developing regions.
+    </p>
+  </main>
+
+  <footer>
+    <p>© 2025 The Daily Chronicle | CSS Newspaper Layout</p>
+  </footer>
+
+</body>
+</html>
