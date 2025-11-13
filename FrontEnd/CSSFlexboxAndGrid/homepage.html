@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q3 – Homepage</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+
+    header {
+      background: #0078ff;
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    header a { color: white; text-decoration: none; font-weight: bold; }
+
+    main {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex: 1;
+      padding: 30px;
+      background: #f5f5f5;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .box:hover {
+      transform: rotate(2deg);
+    }
+
+    footer {
+      background: #0078ff;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+  </header>
+
+  <main>
+    <div class="box"><h2>Services</h2><p>We provide modern web design and development.</p></div>
+    <div class="box"><h2>Projects</h2><p>Take a look at our recent successful projects.</p></div>
+    <div class="box"><h2>Contact</h2><p>Reach out to us for collaboration.</p></div>
+  </main>
+
+  <footer>© 2025 My Website</footer>
+</body>
+</html>
