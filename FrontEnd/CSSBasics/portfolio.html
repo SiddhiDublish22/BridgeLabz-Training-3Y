@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Vanshika Gupta</title>
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light background */
+            color: #333; /* Dark text for contrast */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            position: fixed; /* Stays at top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50; /* Custom background */
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem; /* Using rem units */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2em; /* Using em unit */
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #ffeb3b; /* Highlight on hover */
+        }
+
+        /* Main Section */
+        main {
+            flex: 1; /* Take remaining space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 100px; /* To offset fixed header height */
+        }
+
+        .bio {
+            max-width: 800px;
+            text-align: center;
+            padding: 2rem; /* Using rem */
+            background-color: #e0f7fa; /* Custom contrasting background */
+            border-radius: 10px;
+        }
+
+        .bio img.profile-img {
+            width: 150px; /* px unit */
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .bio p {
+            font-size: 1rem; /* rem unit */
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5vh 0; /* Using vh unit for responsive padding */
+            margin-top: auto; /* Push footer to bottom if content is short */
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 600px) {
+            .bio {
+                padding: 1rem;
+            }
+            .bio img.profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            header nav a {
+                margin-left: 1em;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Vanshika Gupta</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <section class="bio">
+            <img src="https://via.placeholder.com/150" alt="Profile Image" class="profile-img">
+            <p>Hello! I'm Vanshika Gupta, a passionate web developer. I enjoy building responsive and user-friendly websites using modern HTML and CSS techniques. My goal is to create accessible and engaging digital experiences.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Vanshika Gupta. All rights reserved.
+    </footer>
+
+</body>
+</html>
