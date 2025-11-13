@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q2 – Product Gallery</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .price {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #0078ff;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Gallery</h1>
+
+  <div class="grid">
+    <div class="card"><h3>Product 1</h3><p class="price">₹499</p></div>
+    <div class="card"><h3>Product 2</h3><p class="price">₹699</p></div>
+    <div class="card"><h3>Product 3</h3><p class="price">₹899</p></div>
+    <div class="card"><h3>Product 4</h3><p class="price">₹999</p></div>
+    <div class="card"><h3>Product 5</h3><p class="price">₹1199</p></div>
+    <div class="card"><h3>Product 6</h3><p class="price">₹1399</p></div>
+    <div class="card"><h3>Product 7</h3><p class="price">₹1599</p></div>
+    <div class="card"><h3>Product 8</h3><p class="price">₹1799</p></div>
+  </div>
+
+</body>
+</html>
