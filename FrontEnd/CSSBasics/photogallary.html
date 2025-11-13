@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Gallery</title>
+
+<style>
+  /* ---------- Base styles ---------- */
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #f3f5f8;
+    color: #222;
+  }
+
+  header {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 2rem 1rem;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  /* ---------- Gallery layout ---------- */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+  }
+
+  /* ---------- Hover effects ---------- */
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .gallery-item:hover .caption {
+    opacity: 1;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    .caption { font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <h1>My Travel Photo Gallery</h1>
+  </header>
+
+  <main class="gallery">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+      <div class="caption">Sunny Beach</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Mountains">
+      <div class="caption">Majestic Mountains</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1526779259212-756e7f1a79ed" alt="Cityscape">
+      <div class="caption">City Lights</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Forest">
+      <div class="caption">Calm Forest</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Desert">
+      <div class="caption">Desert Dunes</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d" alt="Waterfall">
+      <div class="caption">Waterfall</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Your Name | CSS Only Photo Gallery</p>
+  </footer>
+
+</body>
+</html>
