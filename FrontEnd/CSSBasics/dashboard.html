@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Layout</title>
+
+<style>
+  /* ---------- Global Styles ---------- */
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #f4f6f9;
+    color: #222;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #003366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 1000;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+
+  header nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: 500;
+  }
+
+  header nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---------- Layout Wrapper ---------- */
+  .dashboard {
+    display: flex;
+    margin-top: 60px; /* height of fixed header */
+    min-height: calc(100vh - 60px);
+  }
+
+  /* ---------- Sidebar ---------- */
+  aside {
+    width: 220px;
+    background-color: #00264d;
+    color: white;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+  }
+
+  aside h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #0055aa;
+    padding-bottom: 0.5rem;
+  }
+
+  aside a {
+    color: #cce0ff;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+
+  aside a:hover {
+    background-color: #0055aa;
+  }
+
+  /* ---------- Main Content ---------- */
+  main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .content-box {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .content-box h3 {
+    margin-top: 0;
+    color: #003366;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    .dashboard {
+      flex-direction: column;
+    }
+
+    aside {
+      width: 100%;
+      height: auto;
+      position: relative;
+      top: 0;
+    }
+
+    main {
+      padding: 1.5rem;
+    }
+  }
+
+  footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+
+<body>
+
+  <header>
+    <h1>My Dashboard</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Profile</a>
+      <a href="#">Settings</a>
+    </nav>
+  </header>
+
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside>
+      <h2>Menu</h2>
+      <a href="#">Overview</a>
+      <a href="#">Analytics</a>
+      <a href="#">Reports</a>
+      <a href="#">Users</a>
+      <a href="#">Logout</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <div class="content-box">
+        <h3>Overview</h3>
+        <p>This dashboard gives you a summary of all key activities. Use the sidebar to navigate through different sections.</p>
+      </div>
+
+      <div class="content-box">
+        <h3>Analytics</h3>
+        <p>Analytics data will be shown here. You can monitor traffic, usage, and performance metrics in this section.</p>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2025 Dashboard Interface | HTML & CSS Only</p>
+  </footer>
+
+</body>
+</html>
