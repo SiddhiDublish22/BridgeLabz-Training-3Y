@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover Paris</title>
+  <style>
+    /* ---------- Global Styles ---------- */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      color: #222;
+      background-color: #f8f8f8;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #2e3a59;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1.2rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* ---------- Main Sections ---------- */
+    main section {
+      padding: 80px 10%;
+      text-align: center;
+    }
+
+    /* Section 1 — Hero with fixed background */
+    .hero {
+      background-image: url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1600&q=60");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* parallax effect */
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* Section 2 — Linear Gradient */
+    .culture {
+      background: linear-gradient(135deg, #f9f9f9, #cfe7ff);
+      color: #333;
+    }
+
+    .culture h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #2e3a59;
+    }
+
+    .culture p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1em;
+    }
+
+    /* Section 3 — Radial Gradient */
+    .food {
+      background: radial-gradient(circle at center, #ffe6cc, #ffb84d);
+    }
+
+    .food h2 {
+      color: #663300;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .food p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1em;
+    }
+
+    /* Section 4 — Fixed background again */
+    .landmarks {
+      background-image: url("https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1600&q=60");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+    }
+
+    .landmarks h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .landmarks p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1em;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background-color: #2e3a59;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      main section {
+        padding: 60px 8%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Discover Paris</h1>
+    <nav>
+      <a href="#intro">Home</a>
+      <a href="#culture">Culture</a>
+      <a href="#food">Cuisine</a>
+      <a href="#landmarks">Landmarks</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="intro">
+      <h1>Bienvenue à Paris</h1>
+      <p>The city of lights, love, and endless charm.</p>
+    </section>
+
+    <section class="culture" id="culture">
+      <h2>Rich Culture and Art</h2>
+      <p>
+        Paris has been the cradle of creativity for centuries — from iconic artists like
+        Monet and Picasso to fashion legends such as Coco Chanel. The city’s museums,
+        architecture, and timeless cafés capture the essence of French sophistication.
+      </p>
+    </section>
+
+    <section class="food" id="food">
+      <h2>Delicious French Cuisine</h2>
+      <p>
+        The culinary landscape of Paris is unmatched. Indulge in buttery croissants,
+        creamy cheeses, and exquisite pastries. From cozy bistros to Michelin-starred
+        restaurants, every meal feels like art on a plate.
+      </p>
+    </section>
+
+    <section class="landmarks" id="landmarks">
+      <h2>Famous Landmarks</h2>
+      <p>
+        From the majestic Eiffel Tower to the Gothic marvel of Notre-Dame Cathedral,
+        Paris offers breathtaking views at every corner. Wander along the Seine and
+        experience history and romance blended into the city’s skyline.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Discover Paris | Designed for Assignment 5</p>
+  </footer>
+
+</body>
+</html>
