@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q10 – Flex + Grid Webpage</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; color: #222; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0078ff;
+      color: white;
+      padding: 15px 25px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    article {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      animation: fadeUp 1s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .flex-boxes {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .flex-boxes div {
+      flex: 1;
+      min-width: 100px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    aside {
+      background: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      background: #0078ff;
+      color: white;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 800px) {
+      main { grid-template-columns: 1fr; }
+      header { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Website</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>Welcome</h2>
+      <p>This webpage demonstrates Flexbox + Grid combination with animations.</p>
+      <div class="flex-boxes">
+        <div>Box 1</div>
+        <div>Box 2</div>
+        <div>Box 3</div>
+      </div>
+    </article>
+
+    <aside>
+      <h3>Sidebar</h3>
+      <p>Additional information or links go here.</p>
+    </aside>
+  </main>
+
+  <footer>© 2025 My Responsive Page</footer>
+</body>
+</html>
