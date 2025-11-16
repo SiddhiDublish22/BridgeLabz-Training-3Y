@@ -1,0 +1,106 @@
+/* General Page Styling*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
+}
+
+header, footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+
+   /* Layout using Flexbox */
+
+.examples-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.example-box {
+  background: white;
+  padding: 15px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ------------------------------
+   Pseudo-Class Demonstrations
+--------------------------------*/
+
+/* :hover example */
+.hover-link {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #0066cc;
+  text-decoration: none;
+  border: 1px solid #0066cc;
+  border-radius: 5px;
+}
+
+.hover-link:hover {
+  background: #0066cc;
+  color: white;
+}
+
+/* :focus example */
+.focus-input {
+  padding: 8px;
+  width: 100%;
+  border: 2px solid #777;
+  border-radius: 5px;
+}
+
+.focus-input:focus {
+  border-color: #28a745;
+  outline: none;
+  background: #eaffea;
+}
+
+/* :active example */
+.active-btn {
+  padding: 10px 15px;
+  border: none;
+  background: #ff9800;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.active-btn:active {
+  background: #e68900;
+  transform: scale(0.97);
+}
+
+/* :nth-child() example */
+.nth-list li {
+  padding: 5px 0;
+}
+
+/* Every 2nd li item will be colored */
+.nth-list li:nth-child(2n) {
+  background: #d9ebff;
+  padding-left: 5px;
+}
+
+/* Description text */
+.desc {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #444;
+}

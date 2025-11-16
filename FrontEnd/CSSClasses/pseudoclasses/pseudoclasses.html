@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pseudo-Classes Demonstration</title>
+  <link rel="stylesheet" href="pseudoclasses.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Pseudo-Classes Demonstration</h1>
+    <p>Examples of :hover, :focus, :active, and :nth-child()</p>
+  </header>
+
+  <main class="examples-container">
+
+    <!-- Hover Example -->
+    <section class="example-box">
+      <h2>:hover</h2>
+      <a href="#" class="hover-link">Hover on this link</a>
+      <p class="desc">The <strong>:hover</strong> pseudo-class applies styles when the mouse is over an element.</p>
+    </section>
+
+    <!-- Focus Example -->
+    <section class="example-box">
+      <h2>:focus</h2>
+      <input type="text" class="focus-input" placeholder="Click to focus" />
+      <p class="desc">The <strong>:focus</strong> pseudo-class is applied when an element is focused (clicked or tabbed).</p>
+    </section>
+
+    <!-- Active Example -->
+    <section class="example-box">
+      <h2>:active</h2>
+      <button class="active-btn">Click Me</button>
+      <p class="desc">The <strong>:active</strong> pseudo-class applies only while the element is being clicked.</p>
+    </section>
+
+    <!-- nth-child Example -->
+    <section class="example-box">
+      <h2>:nth-child()</h2>
+      <ul class="nth-list">
+        <li>Item 1</li>
+        <li>Item 2 (Every 2nd item colored)</li>
+        <li>Item 3</li>
+        <li>Item 4 (Every 2nd item colored)</li>
+      </ul>
+      <p class="desc">The <strong>:nth-child()</strong> selector is used to style list items based on their order.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>CSS Pseudo-Class Demo Page</p>
+  </footer>
+
+</body>
+</html>
