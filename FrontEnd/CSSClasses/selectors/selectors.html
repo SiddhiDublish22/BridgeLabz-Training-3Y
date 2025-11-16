@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Practice</title>
+    <link rel="stylesheet" href="q4-selectors.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>CSS Selectors Practice Page</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Element Selector Example</h2>
+            <p>This paragraph is styled using an <strong>element selector</strong>.</p>
+        </section>
+
+        <section>
+            <h2>Class Selector Example</h2>
+            <p class="highlight">This text uses a <strong>class selector</strong>.</p>
+        </section>
+
+        <section>
+            <h2>ID Selector Example</h2>
+            <p id="unique-text">This line is styled with an <strong>ID selector</strong>.</p>
+        </section>
+
+        <section>
+            <h2>Attribute Selector Example</h2>
+            <a href="#" target="_blank">This link uses an attribute selector.</a>
+        </section>
+
+        <section>
+            <h2>Combinators Example</h2>
+
+            <div class="parent">
+                <p>Descendant selector styles this paragraph.</p>
+
+                <div class="child">
+                    <p>Child selector applies to this paragraph.</p>
+                </div>
+
+                <p class="next">This paragraph is next to a div (adjacent sibling selector).</p>
+
+                <p class="general">This paragraph is after the adjacent sibling (general sibling selector).</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>CSS Selector Demonstration • Clean & Semantic</p>
+    </footer>
+
+</body>
+</html>
