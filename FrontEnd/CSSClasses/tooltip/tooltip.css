@@ -1,0 +1,140 @@
+/* Reset-ish */
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #111; }
+
+/* Page-level flexbox centering */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(180deg,#f7f9fc,#ffffff);
+  text-align: center;
+}
+
+/* Header */
+h1 { margin: 0; font-size: 1.6rem; }
+.subtitle { margin: 0.25rem 0 1rem; color: #4b5563; font-size: 0.95rem; }
+
+/* Examples container - keeps examples centered and spaced */
+.examples {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+
+/* Tooltip wrapper - position: relative so the tooltip (absolute) can position above */
+.tooltip {
+  position: relative;         /* parent for absolute tooltip */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 6px;
+  outline: none; /* we'll add focus ring below */
+}
+
+/* Focus styles to allow keyboard users to reveal tooltip */
+.tooltip:focus {
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.12);
+  border-radius: 6px;
+}
+
+/* Trigger styles (words / buttons / avatars) */
+.trigger { cursor: pointer; padding: 0.25rem 0.4rem; font-weight: 600; }
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+.icon-btn:focus { outline: none; }
+
+/* CTA button */
+.cta {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Avatar */
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: linear-gradient(135deg,#7dd3fc,#60a5fa);
+  color: #04263b;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+/* Tooltip text element:
+   - absolute positioning above the element
+   - initially hidden via opacity and visibility
+   - fades in using transition: 0.3s ease-in-out
+*/
+.tooltip-text {
+  position: absolute;           /* required by the assignment */
+  bottom: calc(100% + 10px);    /* place above the hovered element with small gap */
+  left: 50%;
+  transform: translateX(-50%) translateY(6px); /* slight slide-up when showing */
+  white-space: nowrap;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  background: rgba(17,24,39,0.95); /* dark translucent for readability */
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.18);
+  z-index: 999;
+  pointer-events: none;          /* allow cursor to remain on trigger */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+}
+
+/* Small triangle pointer (optional) */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(17,24,39,0.95) transparent transparent transparent;
+  display: block;
+  width: 0;
+  height: 0;
+  z-index: 999;
+}
+
+/* Show tooltip on hover OR keyboard focus of wrapper */
+.tooltip:hover .tooltip-text,
+.tooltip:focus .tooltip-text,
+.tooltip:focus-within .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0); /* slide into place */
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .examples { gap: 0.8rem; }
+  .tooltip-text { font-size: 0.8rem; padding: 0.35rem 0.5rem; white-space: normal; max-width: 180px; }
+}

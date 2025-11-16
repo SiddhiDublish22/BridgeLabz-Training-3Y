@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tooltip Demonstration Page</title>
+  <link rel="stylesheet" href="tooltip.css" />
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>CSS Tooltip Demo</h1>
+      <p class="subtitle">Hover or focus any item to see the tooltip (pure CSS — no JS)</p>
+    </header>
+
+    <section class="examples" aria-label="Tooltip examples">
+      <!-- Example 1: plain word -->
+      <div class="tooltip" tabindex="0">
+        <span class="trigger">Hover me</span>
+        <span class="tooltip-text" role="tooltip">This is a simple tooltip above the word.</span>
+      </div>
+
+      <!-- Example 2: info icon -->
+      <div class="tooltip" tabindex="0">
+        <button class="icon-btn" aria-label="More info">
+          <!-- simple inline SVG icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M11 10h2v6h-2zM12 7.5a1 1 0 100 2 1 1 0 000-2z" fill="currentColor"/>
+          </svg>
+        </button>
+        <span class="tooltip-text" role="tooltip">Helpful info about this icon.</span>
+      </div>
+
+      <!-- Example 3: button -->
+      <div class="tooltip" tabindex="0">
+        <button class="cta">Save</button>
+        <span class="tooltip-text" role="tooltip">Click to save your progress.</span>
+      </div>
+
+      <!-- Example 4: avatar -->
+      <div class="tooltip" tabindex="0">
+        <div class="avatar" aria-hidden="true">SD</div>
+        <span class="tooltip-text" role="tooltip">Siddhi Dublish — Student & Developer</span>
+      </div>
+    </section>
+
+    <footer>
+      <small>Built with semantic HTML & pure CSS tooltips · fade-in: <code>0.3s ease-in-out</code></small>
+    </footer>
+  </main>
+</body>
+</html>
