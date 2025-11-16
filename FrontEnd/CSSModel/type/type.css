@@ -1,0 +1,21 @@
+.article {
+    width: 60%;
+    margin: auto;
+    line-height: 1.7;
+    font-size: 18px;
+    font-family: Georgia, serif;
+}
+
+/* First letter & first line */
+.styled::first-letter {
+    font-size: 2.5rem;
+    color: crimson;
+}
+
+.styled::first-line {
+    font-weight: bold;
+}
+
+mark { background: yellow; }
+strong { color: darkred; }
+em { color: blue; }
