@@ -1,0 +1,34 @@
+.wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Basic box style */
+.box {
+    background: lightblue;
+    overflow: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Different size units */
+.box1 {
+    width: 200px;
+    height: 150px;
+    background: #ffb3b3;
+}
+
+.box2 {
+    width: 50%;
+    height: 20vh;
+    background: #b3ffd9;
+}
+
+.box3 {
+    min-height: 100px;
+    max-width: 150px;
+    background: #c2c2ff;
+}
