@@ -1,0 +1,30 @@
+/* Attribute selector */
+input[type="text"] {
+    border: 2px solid blue;
+}
+
+/* href starts with https */
+a[href^="https"] {
+    color: green;
+}
+
+/* nth-child selector */
+.items li:nth-child(2) {
+    color: red;
+}
+
+/* Pseudo-class */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Pseudo-elements */
+.special::before {
+    content: "★ ";
+    color: gold;
+}
+
+/* Combinator example */
+.items > li {
+    padding: 5px;
+}
