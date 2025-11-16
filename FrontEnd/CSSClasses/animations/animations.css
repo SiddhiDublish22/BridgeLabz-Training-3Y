@@ -1,0 +1,81 @@
+/* ------------------------------------------ */
+/* Reset & Base Styling                       */
+/* ------------------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    color: #111;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header & footer */
+header, footer {
+    margin-bottom: 20px;
+}
+
+/* Flexbox Centering for Animations */
+.animation-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* ------------------------------------------ */
+/* Animation 1: Moving Box                    */
+/* ------------------------------------------ */
+.anim-box {
+    width: 80px;
+    height: 80px;
+    background: #3b82f6;
+    border-radius: 10px;
+    animation: moveBox 3s ease-in-out infinite alternate;
+}
+
+/* Keyframes for moving box */
+@keyframes moveBox {
+    0% { transform: translateX(-80px); }
+    100% { transform: translateX(80px); }
+}
+
+/* ------------------------------------------ */
+/* Animation 2: Bouncing Ball                 */
+/* ------------------------------------------ */
+.ball {
+    width: 60px;
+    height: 60px;
+    background: #ef4444;
+    border-radius: 50%;
+    animation: bounce 1.2s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+/* Keyframes for bouncing ball */
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-90px); }
+}
+
+/* ------------------------------------------ */
+/* Animation 3: Color-Changing Text           */
+/* ------------------------------------------ */
+.color-change {
+    font-size: 1.8rem;
+    animation: changeColor 4s ease-in-out infinite;
+}
+
+/* Keyframes for text color change */
+@keyframes changeColor {
+    0%   { color: #1e3a8a; }
+    33%  { color: #047857; }
+    66%  { color: #b91c1c; }
+    100% { color: #1e3a8a; }
+}
