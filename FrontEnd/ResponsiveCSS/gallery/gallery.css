@@ -1,0 +1,23 @@
+body { margin: 0; font-family: Arial; }
+
+.gallery {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+img { width: 100%; transition: .4s; }
+
+figure:nth-child(1) img { filter: blur(3px); }
+figure:nth-child(2) img { filter: grayscale(100%); }
+figure:nth-child(3) img { filter: sepia(100%); }
+figure:nth-child(4) img { filter: brightness(50%); }
+figure:nth-child(5) img { filter: contrast(200%); }
+figure:nth-child(6) img { filter: hue-rotate(90deg); }
+
+img:hover { filter: none; }
+
+@media (max-width: 600px) {
+    .gallery { grid-template-columns: 1fr; }
+}

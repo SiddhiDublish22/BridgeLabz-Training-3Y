@@ -1,0 +1,25 @@
+body { margin: 0; font-family: Arial; }
+
+.cards {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    flex: 1;
+    background: #eee;
+    padding: 30px;
+    transition: .3s;
+}
+
+.card:hover { background: #ccc; }
+
+@media (max-width: 900px) {
+    .cards { flex-wrap: wrap; }
+    .card { flex: 0 0 calc(50% - 20px); }
+}
+
+@media (max-width: 600px) {
+    .card { flex: 0 0 100%; }
+}

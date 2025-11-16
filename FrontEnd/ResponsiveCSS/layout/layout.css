@@ -1,0 +1,33 @@
+body { margin: 0; font-family: Arial; }
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #ddd;
+}
+
+.features {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.box {
+    flex: 1;
+    padding: 40px;
+    background: #eee;
+    transition: .3s;
+}
+
+.box:hover { transform: scale(1.05); }
+
+.foot {
+    text-align: center;
+    padding: 15px;
+    background: #ccc;
+}
+
+@media (max-width: 750px) {
+    .features { flex-direction: column; }
+}

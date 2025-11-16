@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="type.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type</title>
+</head>
+<body>
+
+<section class="text">
+    <h1>Responsive Typography</h1>
+    <p>This text scales using clamp().</p>
+</section>
+
+</body>
+</html>

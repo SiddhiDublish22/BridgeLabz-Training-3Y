@@ -1,0 +1,23 @@
+body { margin: 0; font-family: Arial; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.box {
+    background: #eee;
+    padding: 20px;
+    transition: .3s;
+}
+
+.box:hover {
+    background: linear-gradient(to right, #bbb, #ddd);
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+}

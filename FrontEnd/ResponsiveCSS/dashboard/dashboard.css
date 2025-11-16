@@ -1,0 +1,44 @@
+body { margin: 0; font-family: Arial; animation: fade .8s; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+.grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+
+.head {
+    grid-column: 1 / 3;
+    background: #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+.side {
+    background: #ddd;
+    padding: 20px;
+}
+
+.main {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.card {
+    background: #eee;
+    padding: 20px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #aaa;
+}
+
+@media (max-width: 750px) {
+    .grid { grid-template-columns: 1fr; }
+    .side { grid-column: 1; }
+}
