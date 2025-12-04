@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Q5 Team Directory</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<ul id="team">
+    <li class="manager">Manager A
+        <ul>
+            <li class="emp">Emp A1</li>
+            <li class="emp">Emp A2</li>
+        </ul>
+    </li>
+    <li class="manager">Manager B
+        <ul>
+            <li class="emp">Emp B1</li>
+            <li class="emp">Emp B2</li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+// Highlight direct reports
+$(".manager").click(function () {
+    $(this).children("ul").children().css("background", "#dfe6e9");
+});
+
+// Hover show contact
+$(".emp").hover(function () {
+    $(this).after("<span class='contact'> Contact: xyz@mail.com </span>");
+}, function () {
+    $(".contact").remove();
+});
+
+// Random highlight siblings
+$(".emp").click(function () {
+    $(this).siblings().css("background", "yellow");
+});
+</script>
+
+</body>
+</html>

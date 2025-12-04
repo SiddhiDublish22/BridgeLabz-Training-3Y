@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Q7 Search</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<input type="text" id="search" placeholder="Search course...">
+<p>Matched: <span id="count">0</span></p>
+
+<ul id="courses">
+    <li>JavaScript</li>
+    <li>React</li>
+    <li>Python</li>
+    <li>Machine Learning</li>
+    <li>HTML</li>
+</ul>
+
+<script>
+$("#search").keyup(function () {
+    let val = $(this).val().toLowerCase();
+    let count = 0;
+
+    $("#courses li").each(function () {
+        let text = $(this).text().toLowerCase();
+        if (text.includes(val)) {
+            $(this).show().css("background", "yellow");
+            count++;
+        } else {
+            $(this).hide();
+        }
+    });
+
+    $("#count").text(count);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Q9 Multi jQuery</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        var jq1 = jQuery.noConflict(true);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        var jq2 = jQuery.noConflict(true);
+    </script>
+
+</head>
+<body>
+
+<button id="show">Show Modal</button>
+<div id="modal" style="display:none">This is a modal!</div>
+
+<script>
+// Carousel using jq1
+jq1(document).ready(function () {
+    jq1("body").css("background", "#fafafa");
+});
+
+// Modal using jq2
+jq2("#show").click(function () {
+    jq2("#modal").fadeIn();
+});
+</script>
+
+</body>
+</html>

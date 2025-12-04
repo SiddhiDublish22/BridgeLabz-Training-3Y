@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Q4 Banners</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<div class="banner">50% OFF Today!</div>
+<div class="banner">Buy 1 Get 1 Free!</div>
+<div class="banner">Mega Sale!</div>
+
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+<button id="slide">Slide</button>
+<button id="fade">Fade</button>
+
+<script>
+// Hide / show
+$("#hide").click(() => $(".banner").hide());
+$("#show").click(() => $(".banner").show());
+
+// Slide toggle
+$("#slide").click(() => $(".banner").slideToggle());
+
+// Fade toggle
+$("#fade").click(() => $(".banner").fadeToggle());
+
+// Auto rotation
+setInterval(() => {
+    $(".banner:first").fadeOut(500, function () {
+        $(this).appendTo("body").fadeIn(500);
+    });
+}, 5000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Q6 Subscription</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<button id="sub">Subscribe</button>
+<button id="unsub">Unsubscribe</button>
+<button id="addTopic">Add Topic</button>
+
+<ul id="topics">
+    <li class="topic">Tech</li>
+    <li class="topic">News</li>
+</ul>
+
+<div id="msg"></div>
+
+<script>
+// Subscribe
+$("#sub").click(() => $("#msg").text("Notifications Enabled"));
+
+// Unsubscribe
+$("#unsub").click(() => $("#msg").text("Notifications Disabled"));
+
+// Add topic dynamically
+$("#addTopic").click(() => {
+    $("#topics").append("<li class='topic'>New Topic</li>");
+});
+
+// Topic click event (uses event delegation)
+$("#topics").on("click", ".topic", function () {
+    alert("Subscribed to " + $(this).text());
+});
+</script>
+
+</body>
+</html>

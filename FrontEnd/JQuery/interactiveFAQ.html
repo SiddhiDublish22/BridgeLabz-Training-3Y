@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Q3 FAQ</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<div class="faq-item">
+    <h3 class="question">What is jQuery?</h3>
+    <p class="answer">A JavaScript library.</p>
+</div>
+
+<div class="faq-item">
+    <h3 class="question">What is AJAX?</h3>
+    <p class="answer">A technique for async calls.</p>
+</div>
+
+<div class="faq-item">
+    <h3 class="question">What is HTML?</h3>
+    <input type="text" class="answer-input">
+</div>
+
+<script>
+// Toggle answer visibility
+$(".question").click(function () {
+    $(this).next().toggle();
+});
+
+// Hover color
+$(".question").hover(
+    function () { $(this).css("color", "blue"); },
+    function () { $(this).css("color", "black"); }
+);
+
+// Double click collapse all
+$(".question").dblclick(() => $(".answer, .answer-input").hide());
+
+// Focus highlight
+$(".answer-input").focus(function () {
+    $(this).parent().css("background", "lightyellow");
+}).blur(function () {
+    $(this).parent().css("background", "white");
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Q8 Blog</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<button id="add">Add Post</button>
+<button id="featured">Add Featured</button>
+<button id="remove">Remove Last</button>
+
+<ul id="posts">
+    <li>Blog Post 1</li>
+    <li>Blog Post 2</li>
+</ul>
+
+<script>
+$("#add").click(() => $("#posts").append("<li>New Blog Post</li>"));
+$("#featured").click(() => $("#posts").prepend("<li>⭐ Featured Post</li>"));
+$("#remove").click(() => $("#posts li:last").remove());
+</script>
+
+</body>
+</html>

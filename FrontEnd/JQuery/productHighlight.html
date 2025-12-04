@@ -1,0 +1,53 @@
+<!-- ========== Q2: Product Highlight ========== -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Q2 Products</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<section class="products">
+
+    <article class="product" data-stock="yes"><h3>Phone</h3><p class="details">64GB Storage</p><span class="fav"></span></article>
+    <article class="product" data-stock="no" discount="20%"><h3>Laptop</h3><p class="details">8GB RAM</p><span class="fav"></span></article>
+    <article class="product" discount="50%"><h3>Headphones</h3><p class="details">Wireless</p><span class="fav"></span></article>
+    <article class="product" data-stock="yes"><h3>Keyboard</h3><p class="details">Mechanical</p><span class="fav"></span></article>
+    <article class="product" discount="10%"><h3>Smart Watch</h3><p class="details">Waterproof</p><span class="fav"></span></article>
+
+</section>
+
+<script>
+// Highlight product when clicked
+$(".product").click(function () {
+    $(this).css("background", "#ffeaa7");
+});
+
+// Hover details show/hide
+$(".product").hover(
+    function () { $(this).find(".details").show(); },
+    function () { $(this).find(".details").hide(); }
+);
+
+// Toggle favorite
+$(".fav").click(function (e) {
+    e.stopPropagation();
+    $(this).toggleClass("selected");
+});
+
+// Discount border
+$("[discount]").css("border", "2px solid green");
+
+// Out of stock
+$(".product").each(function () {
+    if ($(this).data("stock") === "no") {
+        $(this).click(function () {
+            alert("❌ Out of stock!");
+        });
+    }
+});
+</script>
+
+</body>
+</html>
