@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q4 - Multi-API Dashboard (Fetch + Promise.all)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif; padding:20px; max-width:800px; margin:auto}
+    .grid{display:flex; gap:12px; margin-top:20px}
+    .card{flex:1; padding:16px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.06); text-align:center}
+    .skeleton{height:48px; background:#eee; border-radius:6px; display:inline-block; width:60%}
+    .warning{color:#b36b00; margin-top:12px}
+  </style>
+</head>
+<body>
+  <h2>Multi-API Dashboard</h2>
+  <div id="warning" class="warning"></div>
+  <div class="grid">
+    <div class="card" id="usersCard"><div class="title">Users</div><div id="usersCount"><div class="skeleton"></div></div></div>
+    <div class="card" id="ordersCard"><div class="title">Orders</div><div id="ordersCount"><div class="skeleton"></div></div></div>
+    <div class="card" id="productsCard"><div class="title">Products</div><div id="productsCount"><div class="skeleton"></div></div></div>
+  </div>
+
+<script>
+const endpoints = {
+  users: 'http://localhost:3004/users',
+  orders: 'http://localhost:3004/orders',
+  products: 'http://localhost:3004/products'
+};
+
+function setCount(id, val){
+  document.getElementById(id).textContent = val;
+}
+
+function showWarning(msg){
+  document.getElementById('warning').textContent = msg;
+}
+
+function loadAll(){
+  // show skeletons already present; start fetches
+  const pUsers = fetch(endpoints.users).then(r => { if(!r.ok) throw new Error('users'); return r.json(); });
+  const pOrders = fetch(endpoints.orders).then(r => { if(!r.ok) throw new Error('orders'); return r.json(); });
+  const pProducts = fetch(endpoints.products).then(r => { if(!r.ok) throw new Error('products'); return r.json(); });
+
+  // Promise.allSettled so we can show partial data and detect failures
+  Promise.allSettled([pUsers, pOrders, pProducts]).then(results => {
+    let anyFailed = false;
+
+    // users
+    if(results[0].status === 'fulfilled'){
+      setCount('usersCount', results[0].value.length);
+    } else {
+      setCount('usersCount', '—');
+      anyFailed = true;
+    }
+    // orders
+    if(results[1].status === 'fulfilled'){
+      setCount('ordersCount', results[1].value.length);
+    } else {
+      setCount('ordersCount', '—');
+      anyFailed = true;
+    }
+    // products
+    if(results[2].status === 'fulfilled'){
+      setCount('productsCount', results[2].value.length);
+    } else {
+      setCount('productsCount', '—');
+      anyFailed = true;
+    }
+
+    if(anyFailed){
+      showWarning('Some data could not be loaded.');
+    } else {
+      showWarning('');
+    }
+  }).catch(err => {
+    // fallback unexpected error
+    showWarning('Some data could not be loaded.');
+    setCount('usersCount', '—');
+    setCount('ordersCount', '—');
+    setCount('productsCount', '—');
+  });
+}
+
+loadAll();
+</script>
+</body>
+</html>

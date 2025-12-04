@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q1 - Live Search (jQuery AJAX)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif; padding:20px; max-width:800px; margin:auto}
+    .search-box{display:flex; gap:8px; align-items:center}
+    input[type="search"]{flex:1; padding:10px; font-size:16px}
+    .results{margin-top:12px}
+    .product{display:flex; align-items:center; gap:12px; padding:10px; border:1px solid #eee; border-radius:6px; margin-bottom:8px}
+    .product img{width:70px; height:70px; object-fit:cover; border-radius:6px}
+    .meta{flex:1}
+    .loading{display:inline-block; margin-left:8px}
+    .hidden{display:none}
+    .no-results{color:#999}
+  </style>
+</head>
+<body>
+  <h2>Live Product Search</h2>
+  <div class="search-box">
+    <input id="search" type="search" placeholder="Search products..." autocomplete="off" />
+    <div id="spinner" class="loading hidden">Loading...</div>
+  </div>
+
+  <div id="results" class="results"></div>
+
+<script>
+$(function(){
+  const $input = $('#search');
+  const $results = $('#results');
+  const $spinner = $('#spinner');
+  let lastRequestToken = 0;
+
+  function renderProducts(products){
+    $results.empty();
+    if(!products.length){
+      $results.html('<div class="no-results">No products found</div>');
+      return;
+    }
+    products.forEach(p => {
+      const $el = $(`
+        <div class="product">
+          <img src="${p.image}" alt="${p.name}" />
+          <div class="meta">
+            <div style="font-weight:600">${p.name}</div>
+            <div style="color:#333">₹ ${Number(p.price).toFixed(2)}</div>
+          </div>
+        </div>
+      `);
+      $results.append($el);
+    });
+  }
+
+  // debounce helper
+  function debounce(fn, wait=250){
+    let t;
+    return function(...args){ clearTimeout(t); t = setTimeout(()=>fn.apply(this,args), wait); };
+  }
+
+  const doSearch = debounce(function(){
+    const q = $input.val().trim();
+    const token = ++lastRequestToken;
+    $spinner.removeClass('hidden');
+
+    $.ajax({
+      url: 'http://localhost:3001/products',
+      data: q ? { q } : {},
+      method: 'GET',
+      success(data){
+        if(token !== lastRequestToken) return; // stale
+        renderProducts(data);
+      },
+      error(){
+        if(token !== lastRequestToken) return;
+        $results.html('<div class="no-results">Error loading products</div>');
+      },
+      complete(){
+        if(token === lastRequestToken) $spinner.addClass('hidden');
+      }
+    });
+  }, 200);
+
+  $input.on('input', doSearch);
+
+  // initial load (all)
+  $input.trigger('input');
+});
+</script>
+</body>
+</html>

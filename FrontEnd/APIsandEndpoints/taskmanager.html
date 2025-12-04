@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q3 - Task Manager (jQuery AJAX)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif; padding:20px; max-width:900px; margin:auto}
+    .controls{display:flex; gap:12px; align-items:center}
+    select{padding:8px}
+    ul{list-style:none; padding:0; margin-top:12px}
+    li{padding:10px; border:1px solid #eee; border-radius:6px; display:flex; align-items:center; gap:12px; margin-bottom:8px}
+    .title{flex:1}
+  </style>
+</head>
+<body>
+  <h2>Task Manager</h2>
+  <div class="controls">
+    <label>Filter / Sort:
+      <select id="filter">
+        <option value="">All</option>
+        <option value="low">Low Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="high">High Priority</option>
+        <option value="completed">Completed</option>
+      </select>
+    </label>
+    <button id="reload">Reload</button>
+    <div id="status" style="margin-left:auto"></div>
+  </div>
+
+  <ul id="taskList"></ul>
+
+<script>
+const API = 'http://localhost:3003/tasks';
+
+function loadTasks(){
+  $('#status').text('Loading...');
+  const filter = $('#filter').val();
+  let params = {};
+  if(filter === 'completed'){
+    params.completed = true;
+  } else if (filter){
+    params.priority = filter;
+  }
+  $.ajax({
+    url: API,
+    method: 'GET',
+    data: params,
+    success(data){
+      $('#taskList').empty();
+      if(!data.length) {
+        $('#taskList').append('<li>No tasks found</li>');
+        return;
+      }
+      data.forEach(task => {
+        const $li = $(`
+          <li data-id="${task.id}">
+            <input type="checkbox" class="complete" ${task.completed ? 'checked' : ''} />
+            <div class="title">
+              <div style="font-weight:600">${task.title}</div>
+              <div style="font-size:13px;color:#666">Priority: ${task.priority}</div>
+            </div>
+            <div class="actions"></div>
+          </li>
+        `);
+        $('#taskList').append($li);
+      });
+    },
+    error(){
+      $('#taskList').empty().append('<li>Error loading tasks</li>');
+    },
+    complete(){
+      $('#status').text('');
+    }
+  });
+}
+
+$(function(){
+  loadTasks();
+  $('#filter').on('change', loadTasks);
+  $('#reload').on('click', loadTasks);
+
+  // delegate checkbox toggle
+  $('#taskList').on('change', '.complete', function(){
+    const li = $(this).closest('li');
+    const id = li.data('id');
+    const newVal = $(this).is(':checked');
+    // optimistic UI: none needed aside from checkbox itself
+    $.ajax({
+      url: API + '/' + id,
+      method: 'PATCH',
+      contentType: 'application/json',
+      data: JSON.stringify({ completed: newVal }),
+      success(){ /* ok */ },
+      error(){
+        // revert
+        $(this).prop('checked', !newVal);
+        alert('Failed to update task.');
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

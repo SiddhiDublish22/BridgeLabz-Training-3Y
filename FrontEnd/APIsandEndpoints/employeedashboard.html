@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Q2 - Employee Dashboard (XHR + PATCH)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif; padding:20px; max-width:800px; margin:auto}
+    table{width:100%; border-collapse:collapse; margin-top:12px}
+    th,td{padding:10px; border-bottom:1px solid #eee; text-align:left}
+    .toggle{cursor:pointer; padding:6px 10px; border-radius:16px; display:inline-block}
+    .active{background:#d4f8d4; color:#1a7f1a}
+    .inactive{background:#ffe1e1; color:#9a1a1a}
+    .error{color:#b00020; margin-top:10px}
+  </style>
+</head>
+<body>
+  <h2>Employee Status Dashboard</h2>
+  <div id="message" class="error"></div>
+  <table id="tbl">
+    <thead><tr><th>Name</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+<script>
+const API = 'http://localhost:3002/employees';
+
+function showError(msg){
+  const el = document.getElementById('message');
+  el.textContent = msg;
+  setTimeout(()=>{ if (el.textContent === msg) el.textContent = ''; }, 4000);
+}
+
+function createRow(emp){
+  const tr = document.createElement('tr');
+  tr.dataset.id = emp.id;
+
+  const tdName = document.createElement('td'); tdName.textContent = emp.name;
+  const tdStatus = document.createElement('td'); tdStatus.textContent = emp.status;
+  const tdAction = document.createElement('td');
+
+  const btn = document.createElement('button');
+  btn.className = 'toggle ' + (emp.status === 'active' ? 'active' : 'inactive');
+  btn.textContent = emp.status === 'active' ? 'Set Inactive' : 'Set Active';
+
+  btn.addEventListener('click', function(){
+    // optimistic UI update
+    const prevStatus = emp.status;
+    const newStatus = prevStatus === 'active' ? 'inactive' : 'active';
+    emp.status = newStatus;
+    tdStatus.textContent = newStatus;
+    btn.textContent = newStatus === 'active' ? 'Set Inactive' : 'Set Active';
+    btn.className = 'toggle ' + (newStatus === 'active' ? 'active' : 'inactive');
+
+    // XHR PATCH
+    const xhr = new XMLHttpRequest();
+    xhr.open('PATCH', API + '/' + emp.id);
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr.onload = function(){
+      if(xhr.status >= 200 && xhr.status < 300){
+        // success — nothing else to do
+      } else {
+        // revert UI
+        emp.status = prevStatus;
+        tdStatus.textContent = prevStatus;
+        btn.textContent = prevStatus === 'active' ? 'Set Inactive' : 'Set Active';
+        btn.className = 'toggle ' + (prevStatus === 'active' ? 'active' : 'inactive');
+        showError('Failed to update status. Server error.');
+      }
+    };
+    xhr.onerror = function(){
+      // revert UI
+      emp.status = prevStatus;
+      tdStatus.textContent = prevStatus;
+      btn.textContent = prevStatus === 'active' ? 'Set Inactive' : 'Set Active';
+      btn.className = 'toggle ' + (prevStatus === 'active' ? 'active' : 'inactive');
+      showError('Network error. Could not update status.');
+    };
+    xhr.send(JSON.stringify({ status: newStatus }));
+  });
+
+  tdAction.appendChild(btn);
+  tr.appendChild(tdName); tr.appendChild(tdStatus); tr.appendChild(tdAction);
+  return tr;
+}
+
+function loadEmployees(){
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', API);
+  xhr.onload = function(){
+    if(xhr.status >= 200 && xhr.status < 300){
+      const arr = JSON.parse(xhr.responseText);
+      const tbody = document.getElementById('rows');
+      tbody.innerHTML = '';
+      arr.forEach(e => tbody.appendChild(createRow(e)));
+    } else {
+      showError('Failed to load employees.');
+    }
+  };
+  xhr.onerror = function(){ showError('Network error while fetching employees.'); };
+  xhr.send();
+}
+
+loadEmployees();
+</script>
+</body>
+</html>
