@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q10 Live Search</title>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+#results img { width:60px; }
+.loading { color:blue; }
+</style>
+</head>
+<body>
+
+<h2>Live Search</h2>
+<input type="text" id="search" placeholder="Search products...">
+<p id="loading" class="loading" style="display:none;">Loading...</p>
+
+<div id="results"></div>
+
+<script>
+$("#search").on("input", function () {
+  const val = $(this).val().trim();
+  $("#loading").show();
+
+  $.get(`http://localhost:3000/products?q=${val}`, function (data) {
+    $("#loading").hide();
+    $("#results").empty();
+
+    if (data.length === 0) {
+      $("#results").html("<p>No products found</p>");
+      return;
+    }
+
+    data.forEach(p => {
+      $("#results").append(`
+        <div>
+          <img src="${p.image}">
+          <p>${p.name}</p>
+          <p>₹${p.price}</p>
+        </div>
+      `);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

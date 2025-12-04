@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q3 Multi Step Form</title>
+<style>
+  .step { margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<div class="step" id="s1">
+  <h3>Step 1: Name</h3>
+  <input id="name">
+  <button id="n1">Next</button>
+</div>
+
+<div class="step" id="s2" style="display:none;">
+  <h3>Step 2: Email</h3>
+  <input id="email">
+  <button id="b1">Back</button>
+  <button id="n2">Next</button>
+</div>
+
+<div class="step" id="s3" style="display:none;">
+  <h3>Step 3: Password</h3>
+  <input id="pass" type="password">
+  <button id="b2">Back</button>
+  <button id="finish">Finish</button>
+</div>
+
+<div id="summary"></div>
+
+<script>
+const s1 = document.getElementById("s1");
+const s2 = document.getElementById("s2");
+const s3 = document.getElementById("s3");
+const summary = document.getElementById("summary");
+
+// Step 1 Next
+n1.onclick = () => {
+  if (!name.value.trim()) return alert("Enter name");
+  s1.style.display = "none"; s2.style.display = "block";
+};
+
+// Step 2 Back + Next
+b1.onclick = () => { s1.style.display = "block"; s2.style.display = "none"; };
+n2.onclick = () => {
+  if (!email.value.includes("@")) return alert("Invalid email");
+  s2.style.display = "none"; s3.style.display = "block";
+};
+
+// Step 3 Back + Finish
+b2.onclick = () => { s3.style.display = "none"; s2.style.display = "block"; };
+finish.onclick = () => {
+  if (pass.value.length < 6) return alert("Min 6 chars password");
+  s3.style.display = "none";
+  summary.innerHTML = `
+    <h3>Summary</h3>
+    Name: ${name.value}<br>
+    Email: ${email.value}
+  `;
+};
+</script>
+
+</body>
+</html>

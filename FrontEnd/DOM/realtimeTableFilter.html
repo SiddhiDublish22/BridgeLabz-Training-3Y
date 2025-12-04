@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q6 Table Filter</title>
+</head>
+<body>
+
+<input id="search" placeholder="Search student">
+
+<table border="1" id="table">
+  <tr><th>Name</th><th>Branch</th><th>CGPA</th></tr>
+  <tr><td>Alice</td><td>CSE</td><td>9.1</td></tr>
+  <tr><td>Bob</td><td>ECE</td><td>8.4</td></tr>
+  <tr><td>Priya</td><td>CSE</td><td>8.2</td></tr>
+  <tr><td>Tom</td><td>ME</td><td>7.9</td></tr>
+</table>
+
+<p id="no" style="display:none;">No results found</p>
+
+<script>
+const search = document.getElementById("search");
+const rows = document.querySelectorAll("#table tr");
+const no = document.getElementById("no");
+
+search.oninput = () => {
+  const value = search.value.toLowerCase();
+  let count = 0;
+
+  rows.forEach((row, i) => {
+    if (i === 0) return; // skip header
+
+    if (row.textContent.toLowerCase().includes(value)) {
+      row.style.display = ""; count++;
+    } else {
+      row.style.display = "none";
+    }
+  });
+
+  no.style.display = count === 0 ? "block" : "none";
+};
+</script>
+
+</body>
+</html>

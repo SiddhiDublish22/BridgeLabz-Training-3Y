@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q8 Custom Dropdown</title>
+<style>
+#opt { border:1px solid black; width:120px; display:none; }
+.option { padding:5px; cursor:pointer; }
+.option:hover { background:#eee; }
+</style>
+</head>
+<body>
+
+<button id="btn">Select</button>
+<div id="opt">
+  <div class="option">Option 1</div>
+  <div class="option">Option 2</div>
+  <div class="option">Option 3</div>
+</div>
+
+<script>
+const btn = document.getElementById("btn");
+const opt = document.getElementById("opt");
+
+// show/hide
+btn.onclick = () => opt.style.display = opt.style.display === "block" ? "none" : "block";
+
+// choose option
+opt.onclick = (e) => {
+  if (e.target.classList.contains("option")) {
+    btn.textContent = e.target.textContent;
+    opt.style.display = "none";
+  }
+};
+
+// click outside using capturing
+document.addEventListener("click", (e) => {
+  if (!btn.contains(e.target) && !opt.contains(e.target)) {
+    opt.style.display = "none";
+  }
+}, true);
+</script>
+
+</body>
+</html>

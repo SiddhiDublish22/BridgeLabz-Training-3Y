@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q1 Product List Manager</title>
+<style>
+  ul li { margin: 8px 0; }
+  button { margin-left: 10px; }
+  .editing { background: #ffffcc; }
+</style>
+</head>
+<body>
+
+<h2>Product Manager</h2>
+
+<input type="text" id="productInput">
+<button id="addBtn">Add</button>
+
+<ul id="productList"></ul>
+
+<script>
+// DOM
+const input = document.getElementById("productInput");
+const addBtn = document.getElementById("addBtn");
+const ul = document.getElementById("productList");
+
+// Add Product
+addBtn.onclick = () => {
+  if (!input.value.trim()) return;
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <span class="text">${input.value}</span>
+    <button class="edit">Edit</button>
+    <button class="del">Delete</button>
+  `;
+  ul.appendChild(li);
+  input.value = "";
+};
+
+// Event Delegation
+ul.addEventListener("click", (e) => {
+  const li = e.target.closest("li");
+  if (!li) return;
+
+  // Delete
+  if (e.target.classList.contains("del")) li.remove();
+
+  // Edit
+  if (e.target.classList.contains("edit")) {
+    const span = li.querySelector(".text");
+    const box = document.createElement("input");
+    box.value = span.textContent;
+    li.classList.add("editing");
+
+    span.replaceWith(box);
+    box.focus();
+
+    document.addEventListener("click", function save(event) {
+      if (!li.contains(event.target)) {
+        span.textContent = box.value;
+        box.replaceWith(span);
+        li.classList.remove("editing");
+        document.removeEventListener("click", save);
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

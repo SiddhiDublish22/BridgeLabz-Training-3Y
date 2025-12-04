@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q4 Theme Switcher</title>
+<style>
+  body[data-theme="light"] { background:white; color:black; }
+  body[data-theme="dark"] { background:black; color:white; }
+  body[data-theme="blue"] { background:#cce0ff; color:navy; }
+</style>
+</head>
+<body data-theme="light">
+
+<button data-t="light">Light</button>
+<button data-t="dark">Dark</button>
+<button data-t="blue">Blue</button>
+
+<script>
+document.querySelectorAll("button").forEach(btn => {
+  btn.onclick = () => {
+    const theme = btn.getAttribute("data-t");
+    document.body.setAttribute("data-theme", theme);
+  };
+});
+</script>
+
+</body>
+</html>

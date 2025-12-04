@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q2 Character Counter</title>
+<style>
+  #counter { font-size: 18px; }
+</style>
+</head>
+<body>
+
+<h2>Character Counter</h2>
+<textarea id="text" maxlength="100"></textarea>
+<p id="counter">100 characters left</p>
+<button id="reset">Reset</button>
+
+<script>
+const text = document.getElementById("text");
+const counter = document.getElementById("counter");
+const reset = document.getElementById("reset");
+
+text.addEventListener("input", () => {
+  let remaining = 100 - text.value.length;
+
+  // Color logic
+  if (remaining <= 0) counter.style.color = "red";
+  else if (remaining <= 20) counter.style.color = "orange";
+  else counter.style.color = "black";
+
+  counter.textContent = `${remaining} characters left`;
+});
+
+reset.onclick = () => {
+  text.value = "";
+  counter.textContent = "100 characters left";
+  counter.style.color = "black";
+};
+</script>
+
+</body>
+</html>

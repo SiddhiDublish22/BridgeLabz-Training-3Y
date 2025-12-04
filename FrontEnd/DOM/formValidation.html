@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q9 Form Validation</title>
+<style>
+.error { color:red; margin-left:10px; }
+</style>
+</head>
+<body>
+
+<form id="form">
+  Name: <input id="name"><span id="nameErr" class="error"></span><br><br>
+  Email: <input id="email"><span id="emailErr" class="error"></span><br><br>
+  Password: <input id="pass"><span id="passErr" class="error"></span><br><br>
+  <button>Submit</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+form.onsubmit = (e) => {
+  e.preventDefault();
+
+  let ok = true;
+
+  nameErr.textContent = "";
+  emailErr.textContent = "";
+  passErr.textContent = "";
+
+  if (!name.value.trim()) {
+    ok = false; nameErr.textContent = "Required";
+  }
+
+  if (!email.value.includes("@")) {
+    ok = false; emailErr.textContent = "Invalid email";
+  }
+
+  if (pass.value.length < 6) {
+    ok = false; passErr.textContent = "Min 6 chars";
+  }
+
+  if (ok) msg.textContent = "Form Submitted Successfully!";
+};
+
+// remove errors live
+document.addEventListener("input", () => {
+  nameErr.textContent = "";
+  emailErr.textContent = "";
+  passErr.textContent = "";
+});
+</script>
+
+</body>
+</html>

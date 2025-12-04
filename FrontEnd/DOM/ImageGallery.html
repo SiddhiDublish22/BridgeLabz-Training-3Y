@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q5 Image Gallery</title>
+<style>
+.gallery img { width:150px; cursor:pointer; margin:10px; }
+.modal {
+  display:none; position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center; align-items:center;
+}
+.modal img { width:300px; }
+</style>
+</head>
+<body>
+
+<div class="gallery">
+  <img src="https://picsum.photos/200?1">
+  <img src="https://picsum.photos/200?2">
+  <img src="https://picsum.photos/200?3">
+  <img src="https://picsum.photos/200?4">
+  <img src="https://picsum.photos/200?5">
+  <img src="https://picsum.photos/200?6">
+</div>
+
+<div class="modal" id="modal">
+  <div id="content">
+    <img id="modalImg">
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+const content = document.getElementById("content");
+
+document.querySelectorAll(".gallery img").forEach(img => {
+  img.onclick = () => {
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+  };
+});
+
+// close modal
+modal.onclick = () => modal.style.display = "none";
+
+// don't close when clicking inside
+content.onclick = e => e.stopPropagation();
+</script>
+
+</body>
+</html>
